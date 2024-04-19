@@ -96,3 +96,16 @@ function lazyMap(array, mappingFunction) {
   };
 }
 
+function fibonacciGenerator() {
+  let previous = 0;
+  let current = 1;
+
+  return {
+      next: function() {
+          const value = current;
+          current += previous;
+          previous = value;
+          return { value: value, done: false };
+      }
+  };
+}
