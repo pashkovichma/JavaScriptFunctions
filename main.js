@@ -13,8 +13,19 @@ function calculateDiscountedPrice (products, discount) {
   return productsWithDiscountedPrices;
 }
 
-function getFullName (person) {
-  const firtsName = (person.firtsName)[0].toUpperCase() + (person.firtsName).slice(1);
-  const lastName = (person.lastName)[0].toUpperCase() + (person.lastName).slice(1);
+function getFullName (persons) {
+  const firtsName = (persons.firtsName)[0].toUpperCase() + (persons.firtsName).slice(1);
+  const lastName = (persons.lastName)[0].toUpperCase() + (persons.lastName).slice(1);
   return (`${firtsName} ${lastName}`);
+}
+
+function filterUniqueWords(text) {
+  const words = text.toLowerCase().match(/\b[\w'-]+\b/g);
+  const uniqueWords = words.filter((item, index) => words.indexOf(item) === index).sort();
+  return uniqueWords;
+}
+
+function getAverageGrade (students) {
+  const allStudentsGrades = students.flatMap(student => student.grades);
+  return allStudentsGrades.reduce((totalGrade, grade) => totalGrade + grade, 0) / allStudentsGrades.length; 
 }
