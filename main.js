@@ -12,3 +12,9 @@ function calculateDiscountedPrice (products, discount) {
   }));
   return productsWithDiscountedPrices;
 }
+
+function getFullName (person) {
+  const firtsName = (person.firtsName)[0].toUpperCase() + (person.firtsName).slice(1);
+  const lastName = (person.lastName)[0].toUpperCase() + (person.lastName).slice(1);
+  return (`${firtsName} ${lastName}`);
+}
