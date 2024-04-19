@@ -70,3 +70,14 @@ function calculateFactorial(number, accumulator = 1) {
 
   return calculateFactorial(number - 1, number * accumulator);
 }
+
+function power(base, exponent) {
+  if (exponent === 0) {
+      return 1;
+  }
+  if (exponent === 1) {
+      return base;
+  }
+  
+  return base * power(base, exponent - 1);
+}
