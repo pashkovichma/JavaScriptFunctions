@@ -81,3 +81,18 @@ function power(base, exponent) {
   
   return base * power(base, exponent - 1);
 }
+
+function lazyMap(array, mappingFunction) {
+  let index = 0;
+
+  return {
+      next: function() {
+          if (index < array.length) {
+              return { value: mappingFunction(array[index++]), done: false };
+          } else {
+              return { done: true };
+          }
+      }
+  };
+}
+
