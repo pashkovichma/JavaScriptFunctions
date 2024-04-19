@@ -41,3 +41,22 @@ function  createCounter () {
     return currentCount++;
   };
 }
+
+function repeatFunction (functionToInvoke, number) {
+  if (number < 0) {
+    return function () {
+      while (true) {
+        functionToInvoke();
+      }
+    }
+    
+  } else {
+    let i = number;
+    return function () {
+      while(i > 0) {
+        functionToInvoke();
+        i--;
+      }
+    }
+  }
+}
