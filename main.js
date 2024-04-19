@@ -44,6 +44,7 @@ function  createCounter () {
 
 function repeatFunction (functionToInvoke, number) {
   if (number < 0) {
+
     return function () {
       while (true) {
         functionToInvoke();
@@ -52,6 +53,7 @@ function repeatFunction (functionToInvoke, number) {
     
   } else {
     let i = number;
+
     return function () {
       while(i > 0) {
         functionToInvoke();
@@ -59,4 +61,12 @@ function repeatFunction (functionToInvoke, number) {
       }
     }
   }
+}
+
+function calculateFactorial(number, accumulator = 1) {
+  if (number === 0) {
+      return accumulator;
+  }
+
+  return calculateFactorial(number - 1, number * accumulator);
 }
