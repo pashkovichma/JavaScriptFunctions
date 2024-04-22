@@ -22,14 +22,6 @@ function calculateTotalPrice (products) {
   return products.reduce((accumulator, product) => accumulator + product.price, 0);
 }
 
-const products = [
-  { name: "Product 1", price: 10 },
-  { name: "Product 2", price: 20 },
-  { name: "Product 3", price: 30 }
-];
-
-console.log(calculateTotalPrice(products));
-
 function getFullName (persons) {
   const firtsName = (persons.firtsName)[0].toUpperCase() + (persons.firtsName).slice(1);
   const lastName = (persons.lastName)[0].toUpperCase() + (persons.lastName).slice(1);
@@ -37,11 +29,23 @@ function getFullName (persons) {
   return (`${firtsName} ${lastName}`);
 }
 
-function filterUniqueWords(text) {
-  const words = text.toLowerCase().match(/\b[\w'-]+\b/g);
-  const uniqueWords = words.filter((item, index) => words.indexOf(item) === index).sort();
+function getWordsOfText(text) {
+  return text.toLowerCase().match(/\b[\w'-]+\b/g);
+}
+
+function filterUniqueValues(values) {
+  return values.filter((item, index) => values.indexOf(item) === index)
+}
+
+function sortAlphabetically(values) {
+  return values.sort();
+}
   
-  return uniqueWords;
+function filterUniqueWords(text) {
+  if (typeof text !== 'string') {
+    throw new TypeError('Input must be a string');
+  }
+  return sortAlphabetically(filterUniqueValues(getWordsOfText(text)));
 }
 
 function getAverageGrade (students) {
