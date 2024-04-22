@@ -14,6 +14,22 @@ function calculateDiscountedPrice (products, discount) {
   return productsWithDiscountedPrices;
 }
 
+function calculateTotalPrice (products) {
+  if (!Array.isArray(products) || 
+      Array.isArray(products) && !products.length) {
+    throw new Error('Invalid input data');
+  }
+  return products.reduce((accumulator, product) => accumulator + product.price, 0);
+}
+
+const products = [
+  { name: "Product 1", price: 10 },
+  { name: "Product 2", price: 20 },
+  { name: "Product 3", price: 30 }
+];
+
+console.log(calculateTotalPrice(products));
+
 function getFullName (persons) {
   const firtsName = (persons.firtsName)[0].toUpperCase() + (persons.firtsName).slice(1);
   const lastName = (persons.lastName)[0].toUpperCase() + (persons.lastName).slice(1);
